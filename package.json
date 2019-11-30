@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "nodejieba": "^2.3.3"
+  }
+}
