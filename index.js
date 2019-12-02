@@ -7,7 +7,7 @@ const getRandomNum = (m, n) => {
 
 const start = sentence => {
   console.log(" > " + sentence)
-  let list = jieba.tag(sentence),
+  let list = jieba.tag(sentence, true),
     str = ""
 
   console.log(list)
@@ -29,9 +29,16 @@ const start = sentence => {
     str = str + list[i]["word"]
   }
 
+  if (
+    list &&
+    list[0] &&
+    list[0]["tag"] &&
+    (list[0]["tag"] == "r" || list[0]["tag"] == "m")
+  ) {
+    str = dic["emm"][(0, getRandomNum(0, dic["emm"].length - 1))] + str
+  }
+
   console.log(str)
 }
 
-start(
-  "看到你们的这些话，我浑身发抖，大热天的全身冷汗，手脚冰凉，地狱空荡荡魔鬼在人间，这个社会还能不能好了，我们女人到底要怎么活着你们才满意？"
-)
+start("他妈的")
